@@ -27,21 +27,17 @@ class MoviesController < ApplicationController
     end
 
     if params[:sortBy] == 'title' then
-      # @movies = Movie.where({rating: @selectedRatings})
       @movies = @movies.order(:title)
       session[:sortBy] = params[:sortBy]
       
     elsif params[:sortBy] == 'release_date' then
-      # @movies = Movie.where({rating: @selectedRatings})
       @movies = @movies.order(:release_date)
       session[:sortBy] = params[:sortBy]
       
     elsif session[:sortBy] == 'title' then
-      # @movies = Movie.where({rating: @selectedRatings})
       @movies = @movies.order(:title)
       redirect_bool = true       
     elsif params[:sortBy] == 'release_date' then
-      # @movies = Movie.where({rating: @selectedRatings})
       @movies = @movies.order(:release_date)
       redirect_bool = true       
     end
