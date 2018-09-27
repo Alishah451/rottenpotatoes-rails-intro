@@ -12,15 +12,15 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = Movie.ratings
-    @selectedRatings = @all_ratings
+    @custom_ratings = @all_ratings
     
     if params[:ratings] then
-      @selectedRatings = params[:ratings].keys
-      @movies = Movie.where({rating: @selectedRatings})
+      @custom_ratings = params[:ratings].keys
+      @movies = Movie.where({rating: @custom_ratings})
       session[:ratings] = params[:ratings]
     elsif session[:ratings] then
-      @selectedRatings = session[:ratings].keys
-      @movies = Movie.where({rating: @selectedRatings})
+      @custom_ratings = session[:ratings].keys
+      @movies = Movie.where({rating: @custom_ratings})
       redirect_bool = true   
     else
       @movies = Movie.all
